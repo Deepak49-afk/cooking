@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Cloud Kitchen</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/feed.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="admin_orders.html" class="nav-brand">Cloud Kitchen <span style="font-size:1rem; color:var(--text-muted);">(Admin)</span></a>
+    <div class="nav-links">
+      <a href="admin_orders.html" style="color: var(--primary); font-weight: 600;">Orders Monitor</a>
+      <a href="admin.html">Upload Recipe</a>
+      <button id="logoutBtn" class="btn" style="padding: 0.5rem 1rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="main-layout" style="max-width: 1000px; display: block;">
+    <h1 style="margin-bottom: 2rem;">Platform Orders Monitor</h1>
+    
+    <div id="loadingIndicator" style="text-align: center; padding: 2rem;">Loading orders...</div>
+    <div id="ordersContainer" style="display: grid; gap: 1.5rem;"></div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="js/admin_orders.js"></script>
+</body>
+</html>

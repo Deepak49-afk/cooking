@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Favorites - Cloud Kitchen</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/feed.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">Cloud Kitchen</a>
+    <div class="nav-links">
+      <a href="index.html">Discover</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="profile.html">Profile</a>
+      <button id="logoutBtn" class="btn" style="padding: 0.5rem 1rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="main-layout" style="max-width: 1200px;">
+    <main class="feed-content">
+      <h1 style="margin-bottom: 2rem;">My Favorites</h1>
+      <div id="favoritesGrid" class="recipe-grid">
+        <!-- Favorites injected here -->
+      </div>
+      <div id="loadingIndicator" style="text-align: center; display: none; padding: 2rem;">Loading...</div>
+    </main>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="js/favorites.js"></script>
+</body>
+</html>

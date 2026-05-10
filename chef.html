@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chef Dashboard - Cloud Kitchen</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/feed.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="chef.html" class="nav-brand">Cloud Kitchen <span style="font-size:1rem; color:var(--text-muted);">(Chef)</span></a>
+    <div class="nav-links">
+      <a href="chef.html" style="color: var(--primary); font-weight: 600;">Incoming Orders</a>
+      <button id="logoutBtn" class="btn" style="padding: 0.5rem 1rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="main-layout" style="max-width: 1000px; display: block;">
+    <h1 style="margin-bottom: 2rem;">Active Kitchen Orders</h1>
+    
+    <div id="loadingIndicator" style="text-align: center; padding: 2rem;">Loading orders...</div>
+    <div id="ordersContainer" style="display: grid; gap: 1.5rem;"></div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="js/chef.js"></script>
+</body>
+</html>

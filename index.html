@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Kitchen - Discover Recipes</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/feed.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">Cloud Kitchen</a>
+    <div class="nav-links">
+      <a href="index.html">Discover</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="profile.html">Profile</a>
+      <button id="logoutBtn" class="btn" style="padding: 0.5rem 1rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="main-layout">
+    <aside class="sidebar glass">
+      <div class="filter-section">
+        <h3 class="filter-title">Difficulty</h3>
+        <label class="filter-label"><input type="checkbox" value="Easy" class="filter-diff"> Easy</label>
+        <label class="filter-label"><input type="checkbox" value="Medium" class="filter-diff"> Medium</label>
+        <label class="filter-label"><input type="checkbox" value="Hard" class="filter-diff"> Hard</label>
+      </div>
+
+      <div class="filter-section">
+        <h3 class="filter-title">Dietary</h3>
+        <label class="filter-label"><input type="checkbox" value="Vegetarian" class="filter-diet"> Vegetarian</label>
+        <label class="filter-label"><input type="checkbox" value="Vegan" class="filter-diet"> Vegan</label>
+        <label class="filter-label"><input type="checkbox" value="Gluten-Free" class="filter-diet"> Gluten-Free</label>
+      </div>
+
+      <button id="applyFiltersBtn" class="btn btn-full">Apply Filters</button>
+    </aside>
+
+    <main class="feed-content">
+      <div class="search-bar">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search recipes, ingredients, or cuisines...">
+        <select id="sortSelect" class="form-control" style="width: auto;">
+          <option value="newest">Newest</option>
+          <option value="rating">Top Rated</option>
+          <option value="time_low">Time: Low to High</option>
+        </select>
+        <button id="searchBtn" class="btn">Search</button>
+      </div>
+
+      <div id="recipeGrid" class="recipe-grid">
+        <!-- Recipes injected via JS -->
+      </div>
+      <div id="loadingIndicator" style="text-align: center; display: none; padding: 2rem;">Loading...</div>
+    </main>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Connect to WebSocket as customer for real-time notifications
+    const _socket = io();
+    _socket.on('connect', () => {
+      const _u = JSON.parse(localStorage.getItem('user') || '{}');
+      if (_u.id) _socket.emit('join', { user_id: _u.id, role: _u.role || 'customer' });
+    });
+    _socket.on('notification', (data) => {
+      // Create a toast notification
+      let container = document.querySelector('.toast-container');
+      if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        document.body.appendChild(container);
+      }
+      const toast = document.createElement('div');
+      toast.className = 'toast success';
+      toast.textContent = data.message;
+      container.appendChild(toast);
+      setTimeout(() => { toast.classList.add('fade-out'); setTimeout(() => toast.remove(), 300); }, 5000);
+    });
+  </script>
+</body>
+</html>

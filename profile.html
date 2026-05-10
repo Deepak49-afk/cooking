@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - Cloud Kitchen</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/feed.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-brand">Cloud Kitchen</a>
+    <div class="nav-links">
+      <a href="index.html">Discover</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="profile.html">Profile</a>
+      <button id="logoutBtn" class="btn" style="padding: 0.5rem 1rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="main-layout" style="max-width: 800px;">
+    <div class="feed-content">
+      <div class="profile-header glass">
+        <img id="profileImage" src="" alt="Avatar" class="profile-avatar">
+        <div class="profile-info">
+          <h1 id="profileUsername">Loading...</h1>
+          <p id="profileBio" style="color: var(--text-muted);">No bio yet.</p>
+          <p id="profileLocation" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.25rem;"></p>
+        </div>
+      </div>
+
+      <div class="auth-card glass" style="max-width: 100%; animation: none;">
+        <h2 style="margin-bottom: 1.5rem;">Edit Profile</h2>
+        <form id="profileForm">
+          <div class="form-group">
+            <label class="form-label" for="bio">Bio</label>
+            <textarea id="bio" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="location">Location</label>
+            <input type="text" id="location" class="form-control">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="profilePic">Profile Picture</label>
+            <input type="file" id="profilePic" class="form-control" accept="image/*">
+          </div>
+          <button type="submit" class="btn" id="saveProfileBtn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

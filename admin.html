@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Recipe - Cloud Kitchen</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/feed.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="admin_orders.html" class="nav-brand">Cloud Kitchen <span style="font-size:1rem; color:var(--text-muted);">(Admin)</span></a>
+    <div class="nav-links">
+      <a href="admin_orders.html">Orders Monitor</a>
+      <a href="admin.html" style="color: var(--primary); font-weight: 600;">Upload Recipe</a>
+      <button id="logoutBtn" class="btn" style="padding: 0.5rem 1rem;">Logout</button>
+    </div>
+  </nav>
+
+  <div class="main-layout" style="max-width: 900px; display: block;">
+    <div class="auth-card glass" style="max-width: 100%; margin: 0 auto; animation: none;">
+      <h1 style="margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem;">Upload New Recipe</h1>
+      
+      <form id="recipeForm">
+        <div class="form-row">
+          <div class="form-group" style="flex: 2;">
+            <label class="form-label" for="title">Recipe Title</label>
+            <input type="text" id="title" class="form-control" placeholder="e.g., Spicy Garlic Pasta" required>
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label class="form-label" for="cuisine">Cuisine</label>
+            <input type="text" id="cuisine" class="form-control" placeholder="e.g., Italian">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="description">Short Description</label>
+          <textarea id="description" class="form-control" rows="2" placeholder="Briefly describe this recipe..."></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="prepTime">Prep Time (mins)</label>
+            <input type="number" id="prepTime" class="form-control" min="0" value="10">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="cookingTime">Cook Time (mins)</label>
+            <input type="number" id="cookingTime" class="form-control" min="0" value="20">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="difficulty">Difficulty</label>
+            <select id="difficulty" class="form-control">
+              <option value="Easy">Easy</option>
+              <option value="Medium" selected>Medium</option>
+              <option value="Hard">Hard</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="imageUrl">Image URL</label>
+          <input type="url" id="imageUrl" class="form-control" placeholder="https://images.unsplash.com/...">
+        </div>
+
+        <!-- Dynamic Ingredients -->
+        <div class="dynamic-section">
+          <div class="dynamic-header">
+            <h3 style="margin: 0;">Ingredients</h3>
+            <button type="button" class="btn btn-sm" id="addIngredientBtn">+ Add</button>
+          </div>
+          <div id="ingredientsList">
+            <div class="dynamic-row">
+              <input type="text" class="form-control ingredient-input" placeholder="e.g., 2 cups of flour" required>
+              <button type="button" class="remove-btn">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Steps -->
+        <div class="dynamic-section">
+          <div class="dynamic-header">
+            <h3 style="margin: 0;">Instructions</h3>
+            <button type="button" class="btn btn-sm" id="addStepBtn">+ Add</button>
+          </div>
+          <div id="stepsList">
+            <div class="dynamic-row">
+              <textarea class="form-control step-input" rows="2" placeholder="Step 1..." required></textarea>
+              <button type="button" class="remove-btn">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dietary Filters -->
+        <div class="form-group" style="margin-top: 2rem;">
+          <label class="form-label">Dietary Tags</label>
+          <div class="checkbox-group" style="margin-bottom: 0;">
+            <label style="margin-right: 1rem;"><input type="checkbox" class="diet-tag" value="Vegetarian"> Vegetarian</label>
+            <label style="margin-right: 1rem;"><input type="checkbox" class="diet-tag" value="Vegan"> Vegan</label>
+            <label><input type="checkbox" class="diet-tag" value="Gluten-Free"> Gluten-Free</label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-full" id="submitRecipeBtn" style="margin-top: 2rem; font-size: 1.1rem; padding: 1rem;">Publish Recipe</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
